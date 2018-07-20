@@ -1,6 +1,7 @@
 package maxKVisitors.util;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -10,20 +11,31 @@ public class FileProcessor {
 	
 	public FileProcessor(String inputFilePath) {
 		this.inputFilePath = inputFilePath;
+		try {
+			bReaderObj = new BufferedReader(new FileReader(inputFilePath));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
-	public void readLine() {
+	public int nextInt() {
 		try{
-			bReaderObj = new BufferedReader(new FileReader(inputFilePath));
 		    String line;
 		    while ((line = bReaderObj.readLine()) != null) {
-		       String[] dataArray = line.split(":");
+		       return Integer.parseInt(line);
 		    }
 		}
 		catch(IOException  e) { //handling in case of bufferedReader goes wrong
 			System.err.println("Exception: while reading input file");
-			System.out.println("Exiting...");
+			System.err.println("Exiting...");
 			System.exit(0);
 		}
+		catch(NumberFormatException e) {
+			System.err.println("Exception: Please enter only integers in the input file");
+			System.err.println("Exiting...");
+			System.exit(0);
+		}
+		return -1;
 	}
 }
