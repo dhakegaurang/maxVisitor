@@ -54,7 +54,7 @@ public class MaxHeapVisitor implements VisitorI{
 	}
 	
 	void heapify(Vector<Integer> vector, int n, int i)
-    {
+    {	
         int largest = i;  // Initialize largest as root
         int l = 2*i + 1;  // left = 2*i + 1
         int r = 2*i + 2;  // right = 2*i + 2
