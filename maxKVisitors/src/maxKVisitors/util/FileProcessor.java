@@ -31,7 +31,7 @@ public class FileProcessor {
 			System.err.println("Exiting...");
 			System.exit(0);
 		}
-		catch(NumberFormatException e) {
+		catch(NumberFormatException e) { //handling in case integer is not found in input
 			System.err.println("Exception: Please enter only integers in the input file");
 			System.err.println("Exiting...");
 			System.exit(0);
