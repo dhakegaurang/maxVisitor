@@ -21,22 +21,10 @@ public class Driver {
 		
 		FileProcessor fp = new FileProcessor("input.txt");
 		PopulateVisitor populateVisitorObj = new PopulateVisitor(fp);
-		populateVisitorObj.populateMyArray(myArrayObj1);
+		populateVisitorObj.populate(myArrayObj1,myArrayObj2,myVectorObj1,myVectorObj2);
 		
-		fp = new FileProcessor("input.txt");
-		populateVisitorObj = new PopulateVisitor(fp);
-		populateVisitorObj.populateMyArray(myArrayObj2);
-		
-		fp = new FileProcessor("input.txt");
-		populateVisitorObj = new PopulateVisitor(fp);
-		populateVisitorObj.populateMyVector(myVectorObj1);
-		
-		fp = new FileProcessor("input.txt");
-		populateVisitorObj = new PopulateVisitor(fp);
-		populateVisitorObj.populateMyVector(myVectorObj2);
-		
-		MaxHeapVisitor maxHeapObj = new MaxHeapVisitor(2,resultObj);
-		ModifiedBubbleSortVisitor bubbleSortObj = new ModifiedBubbleSortVisitor(2,resultObj);
+		MaxHeapVisitor maxHeapObj = new MaxHeapVisitor(12,resultObj);
+		ModifiedBubbleSortVisitor bubbleSortObj = new ModifiedBubbleSortVisitor(12,resultObj);
 		
 		myArrayObj1.accept(maxHeapObj);
 		myVectorObj1.accept(maxHeapObj);
