@@ -3,16 +3,33 @@ package maxKVisitors.util;
 import java.util.List;
 import java.util.Vector;
 
+import maxKVisitors.util.MyLogger.DebugLevel;
+/**
+* MaxHeapVisitor program is responsible for sorting instance of vector and array using heapsort
+*
+* @author  Gaurang Dhake
+* @version 1.0
+* @since   07/21/2018
+*/
 public class MaxHeapVisitor implements VisitorI{
 	private int K;
 	private Results resultObj;
+	private DebugLevel debugLevel;
+	
 	public MaxHeapVisitor(int kin, Results resultObj) {
+		this.debugLevel = DebugLevel.MAX_HEAP_VISITOR;
+		MyLogger.writeMessage("in MaxHeapVisitor constructor", debugLevel);
 		K = kin; 
 		this.resultObj = resultObj;
 	}
-
+	/**
+	   * This visit method from VisitorI interface makes sure that vector is sorted by maxheap algorithm
+	   * @param vectorObj from driver for sorting
+	   * @return None Since it is of type void
+	   */
 	@Override
 	public void visit(MyVector vectorObj) {
+		MyLogger.writeMessage("in MaxHeapVisitor class, visit method of vector instance", debugLevel);
 		Vector<Integer> vector = vectorObj.getVector();
 		StringBuilder sb = new StringBuilder();
 		sb.append("Max-Heap Vector: ");
@@ -33,8 +50,14 @@ public class MaxHeapVisitor implements VisitorI{
         resultObj.storeNewResult(sb.toString()+"\n");
 	}
 	
+	/**
+	   * This visit method from VisitorI interface makes sure that array is sorted by maxheap algorithm
+	   * @param arrayObj from driver for sorting by heapsort
+	   * @return None Since it is of type void
+	   */
 	@Override
 	public void visit(MyArray arrayObj) {
+		MyLogger.writeMessage("in MaxHeapVisitor class, visit method of array instance", debugLevel);
 		List<Integer> array = arrayObj.getArray();
 		StringBuilder sb = new StringBuilder();
 		sb.append("Max-Heap Array: ");
@@ -54,8 +77,15 @@ public class MaxHeapVisitor implements VisitorI{
         }
         resultObj.storeNewResult(sb.toString()+"\n");
 	}
-	
+	/**
+	   * This heapify method is recursive method for sorting vector using maxheap technique
+	   * @param vector populated vector
+	   * @param n is the size of vector
+	   * @param i is assumed to be the largest first element in vector
+	   * @return None Since it is of type void
+	   */
 	void heapify(Vector<Integer> vector, int n, int i){	
+		MyLogger.writeMessage("in MaxHeapVisitor class, heapify method of vector instance", debugLevel);
 		int largest = i;
         int l = 2*i + 1;  
         int r = 2*i + 2;  
@@ -74,8 +104,15 @@ public class MaxHeapVisitor implements VisitorI{
             heapify(vector, n, largest);
         }
     }
-	
+	/**
+	   * This heapify method is recursive method for sorting array using maxheap technique
+	   * @param vector populated vector
+	   * @param n is the size of vector
+	   * @param i is assumed to be the largest first element in array
+	   * @return None Since it is of type void
+	   */
 	void heapify(List<Integer> array, int n, int i){
+		MyLogger.writeMessage("in MaxHeapVisitor class, heapify method of array instance", debugLevel);
 		int largest = i; 
         int l = 2*i + 1;  
         int r = 2*i + 2;  
@@ -91,7 +128,6 @@ public class MaxHeapVisitor implements VisitorI{
         	int swap = array.get(i);
         	array.set(i, array.get(largest));
         	array.set(largest, swap);
- 
             heapify(array, n, largest);
         }
     }
